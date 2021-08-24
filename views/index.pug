@@ -1,0 +1,8 @@
+html
+  head
+    title Your Songs
+  body
+    h1 Your Top Songs 
+    textarea(name="song_list", cols="30", rows="10" disabled=true)
+      |#{JSON.stringify(songs_list)}
+    

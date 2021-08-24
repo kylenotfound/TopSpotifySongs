@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lifetime Spotify Listener</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="login">
+        <p>Select Time Range</p>
+        <select id="range">
+          <option value="long_term">All Time</option>
+          <option value="medium_term">6 Months</option>
+          <option value="short_term">4 weeks</option>
+        </select> <br>
+        <p>Select Amount of songs</p>
+        <select type="text" placeholder="Select number: " id="limit">
+          <option value=5>5</option>
+          <option value=10>10</option>
+          <option value=15>15</option>
+          <option value=20>20</option>
+          <option value=30>30</option>
+          <option value=40>40</option>
+          <option value=50>50</option>
+        </select><br>
+        <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+      </div>
+
+    <script>
+      (function() {
+
+        document.addEventListener("click", getQueryParams, false);
+
+        function getQueryParams(e){
+          var target = e.target || e.srcElement;
+          var range = document.getElementById('range').value;
+          var limit = document.getElementById('limit').value;
+          if (target.tagName === 'A') {
+            var href = target.getAttribute('href');
+            href += "?limit=" + limit + "&range=" + range;
+            e.preventDefault();
+            window.location.href = href;
+          }
+        }
+
+        if (document.addEventListener) {
+          document.addEventListener('click', getQueryParams);
+        } else if (document.attachEvent) {
+          document.attachEvent('onclick', getQueryParams);
+        }
+
+      })();
+    </script>
+  </body>
+</html>
+
